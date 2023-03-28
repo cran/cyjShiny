@@ -3,9 +3,16 @@ library(cyjShiny)
 library(htmlwidgets)
 library(graph)
 library(jsonlite)
+
+# NOT WORKING: 2023-03-20
+
 #----------------------------------------------------------------------------------------------------
-load("yeastGalactoseGraphNEL.RData")
-load("yeastGalactose.RData")
+
+yeastGalactoseGraphNELFile <- system.file(file.path("demos", "galFiltered-fromBioconductorGraphNEL", "yeastGalactoseGraphNEL.RData"), package="cyjShiny")
+yeastGalactoseFile <- system.file(file.path("demos", "galFiltered-fromBioconductorGraphNEL", "yeastGalactose.RData"), package="cyjShiny")
+  
+load(yeastGalactoseGraphNELFile)
+load(yeastGalactoseFile)
 tbl.mrna <- as.data.frame(tbl.mrna)
 nodeAttrs <- nodeData(g, attr="label")
 
@@ -41,13 +48,8 @@ ui = shinyUI(fluidPage(
                                 "breadthfirst",
                                 "grid",
                                 "random",
-                                "dagre",
-                                "cose-bilkent",
                                 "preset",
-                                "euler",
-                                "fcose",
-                                "springy",
-                                "spread")),
+                                "fcose")),
 
           selectInput("setNodeAttributes", "Select Condition:", choices=condition),
           selectInput("selectName", "Select Node by ID:", choices = c("", nodes(g))),

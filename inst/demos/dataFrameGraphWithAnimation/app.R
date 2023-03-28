@@ -1,5 +1,11 @@
 library(cyjShiny)
 library(later)
+
+# PURPOSE ----
+# Shows usage of multiple styles 
+
+printf <- function(...) cat(sprintf(...))
+
 #----------------------------------------------------------------------------------------------------
 styles <- c("style 01" = "style01.js",
             "generic style"="basicStyle.js")
@@ -53,15 +59,8 @@ ui = shinyUI(fluidPage(
                                 "breadthfirst",
                                 "grid",
                                 "random",
-                                "dagre",
-                                "cose-bilkent",
                                 "preset",
-                                "euler",
-                                "fcose",
-                                "springy",
-                                "spread")),
-          
-
+                                "fcose")),
 
           selectInput("showCondition", "Select Condition:", choices=rownames(tbl.lfc)),
           selectInput("selectName", "Select Node by ID:", choices = c("", sort(tbl.nodes$id))),

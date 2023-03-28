@@ -4,6 +4,10 @@ library(htmlwidgets)
 library(graph)
 library(jsonlite)
 library(later)
+
+# PURPOSE ----
+# Load and visualize networks generated in Cytoscape Desktop 
+
 #----------------------------------------------------------------------------------------------------
 demo.directory <- system.file(package="cyjShiny", "extdata", "demoGraphsAndStyles")
 styles <- c("",
@@ -41,14 +45,8 @@ ui = shinyUI(fluidPage(
                                 "breadthfirst",
                                 "grid",
                                 "random",
-                                "dagre",
-                                "cose-bilkent",
                                 "preset",
-                                "euler",
-                                "fcose",
-                                "springy",
-                                "spread")),
-
+                                "fcose")),
 
           #selectInput("setNodeAttributes", "Select Condition:", choices=condition),
           #selectInput("selectName", "Select Node by ID:", choices = c("", nodes(g))),

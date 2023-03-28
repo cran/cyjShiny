@@ -1,5 +1,8 @@
 library(cyjShiny)
 library(later)
+
+# NOTE (2023-03-20): Differences to other demos? 
+
 #----------------------------------------------------------------------------------------------------
 styles <- c("",
             "generic style"="basicStyle.js",
@@ -47,14 +50,8 @@ ui = shinyUI(fluidPage(
                                 "breadthfirst",
                                 "grid",
                                 "random",
-                                "dagre",
-                                "cose-bilkent",
                                 "preset",
-                                "euler",
-                                "fcose",
-                                "springy",
-                                "spread")),
-
+                                "fcose")),
 
           selectInput("showCondition", "Select Condition:", choices=rownames(tbl.lfc)),
           selectInput("selectName", "Select Node by ID:", choices = c("", colnames(tbl.lfc))),

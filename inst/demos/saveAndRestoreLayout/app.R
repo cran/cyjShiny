@@ -1,6 +1,12 @@
 library(cyjShiny)
 library(DT)
 library(later)
+
+# PURPOSE ----
+# Within a session, save node positions and restore positions for nodes moved after positions saved
+
+printf <- function(...) cat(sprintf(...))
+
 #----------------------------------------------------------------------------------------------------
 styles <- c("",
             "generic style"="basicStyle.js",
@@ -53,14 +59,8 @@ ui = shinyUI(fluidPage(
                                 "breadthfirst",
                                 "grid",
                                 "random",
-                                "dagre",
-                                "cose-bilkent",
                                 "preset",
-                                "euler",
-                                "fcose",
-                                "springy",
-                                "spread")),
-
+                                "fcose")),
 
           selectInput("showCondition", "Select Condition:", choices=rownames(tbl.lfc)),
           selectInput("selectName", "Select Node by ID:", choices = c("", sort(tbl.nodes$id))),

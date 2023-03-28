@@ -1,0 +1,13 @@
+name: cyjShiny
+title: cyjShiny
+username:
+account: cannin
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8472181
+bundleId: 6993637
+url: https://cannin.shinyapps.io/cyjShiny/
+when: 1679507921.82796
+lastSyncTime: 1679507921.82796
+asMultiple: FALSE
+asStatic: FALSE

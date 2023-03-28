@@ -1,16 +1,8 @@
----
-title: "cyjShiny Demo"
-output: html_document
----
-
-# Load Library
-
-```{r include = FALSE}
+library(shiny)
 library(cyjShiny)
-```
+library(graph)
+library(jsonlite)
 
-# Show Toy Network
-```{r}
 # NETWORK DATA ----
 tbl_nodes <- data.frame(id=c("A", "B", "C"), 
                         size=c(10, 20, 30),
@@ -24,9 +16,16 @@ tbl_edges <- data.frame(source=c("A", "B", "C"),
 
 graph_json <- toJSON(dataFramesToJSON(tbl_edges, tbl_nodes), auto_unbox=TRUE)
 
-print(graph_json)
-print(class(graph_json))
+# UI ----
+ui <- fluidPage(cyjShinyOutput('cyjShiny'))
 
-cyjShiny(graph=graph_json, layoutName="cola")
-```
+# SERVER ----
+server <- function(input, output, session) {
+  output$cyjShiny <- renderCyjShiny({
+    # Layouts (see js.cytoscape.org): cola, cose, circle, concentric, grid, breadthfirst, random, dagre, cose-bilkent
+    cyjShiny(graph_json, layoutName="cola")
+  })
+}
 
+# RUN ----
+shinyApp(ui=ui, server=server)

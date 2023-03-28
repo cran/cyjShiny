@@ -1,5 +1,11 @@
 library(cyjShiny)
 library(later)
+
+# PURPOSE ----
+# Use preset layout to set node positions 
+
+printf <- function(...) cat(sprintf(...))
+
 #----------------------------------------------------------------------------------------------------
 styles <- c("",
             "generic style"="basicStyle.js",
@@ -53,16 +59,9 @@ ui = shinyUI(fluidPage(
                                 "breadthfirst",
                                 "grid",
                                 "random",
-                                "dagre",
-                                "cose-bilkent",
                                 "preset",
-                                "euler",
-                                "fcose",
-                                "springy",
-                                "spread")),
+                                "fcose")),
           
-
-
           selectInput("showCondition", "Select Condition:", choices=rownames(tbl.lfc)),
           selectInput("selectName", "Select Node by ID:", choices = c("", sort(tbl.nodes$id))),
           actionButton("sfn", "Select First Neighbor"),

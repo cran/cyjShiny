@@ -4,6 +4,9 @@ library(htmlwidgets)
 library(graph)
 library(jsonlite)
 library(later)
+
+# NOT WORKING (2023-03-20)
+
 #----------------------------------------------------------------------------------------------------
 styles <- c("",
             "Hamid's style"="styleCancer_21July2017.js",
@@ -36,14 +39,8 @@ ui = shinyUI(fluidPage(
                                 "breadthfirst",
                                 "grid",
                                 "random",
-                                "dagre",
-                                "cose-bilkent",
                                 "preset",
-                                "euler",
-                                "fcose",
-                                "springy",
-                                "spread")),
-
+                                "fcose")),
 
           #selectInput("setNodeAttributes", "Select Condition:", choices=condition),
           #selectInput("selectName", "Select Node by ID:", choices = c("", nodes(g))),
